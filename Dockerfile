@@ -8,7 +8,7 @@ RUN mkdir -p /setup
 WORKDIR /setup
 
 COPY deb/wkhtmltox-0.12.2.1_linux-jessie-amd64.deb /setup/
-dpkg -i /setup/wkhtmltox-0.12.2.1_linux-jessie-amd64.deb
+RUN dpkg -i /setup/wkhtmltox-0.12.2.1_linux-jessie-amd64.deb
 
 COPY Gemfile /setup/
 COPY Gemfile.lock /setup/
