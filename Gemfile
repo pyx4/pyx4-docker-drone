@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.6'
 
 gem 'mysql2'
 
@@ -18,6 +18,7 @@ gem 'will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
+gem "spine-rails", :path => './vendor/spine-rails'
 gem "json2-rails"
 gem 'sass-rails', '~> 4.0.2'
 gem 'coffee-rails'
@@ -26,10 +27,11 @@ gem 'eco'
 gem 'uglifier', '>= 1.0.3'
 
 # jQuery
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.0.3'
 gem 'jquery-ui-rails'
 gem 'jquery-scrollto-rails'
 gem "therubyracer", ">= 0.8.2"
+gem "libv8", "3.16.14.7" #Issue with 3.16.14.15
 gem "historyjs-rails"
 
 # To use ActiveModel has_secure_password
@@ -47,13 +49,17 @@ gem 'rack'
 gem 'json'
 gem 'coffee-script'
 gem 'sprockets', '~> 2.11.0'
+gem 'sprockets-commonjs', :path => './vendor/sprockets-commonjs'
 
+
+gem 'byebug', groups: [:development, :test]
+gem 'listen', '~> 3.0.6' , groups: [:development, :test]
 
 group :development do
   gem 'puma'
   #gem 'thin' #Tiny, fast & funny HTTP server
   gem 'letter_opener' #Preview email in the browser instead of sending it.
-  gem 'byebug'
+
   # Deploy with Capistrano
   gem 'capistrano'
   gem 'capistrano-bundler'
@@ -64,7 +70,7 @@ group :development do
   # gem 'jasmine' #Jasmine is a Behavior Driven Development testing framework for JavaScript
 
   gem 'gemsurance' #Gemsurance is a tool for monitoring if any of your Ruby Gems are out-of-date or vulnerable. usage : $bundle exec gemsurance [options]
-  gem 'shut_up_assets', :git => 'https://github.com/pyx4/shut_up_assets.git'
+  gem 'shut_up_assets', :path => './vendor/shut_up_assets'
   gem 'rails-erd'
 
   gem 'spring'
@@ -79,11 +85,13 @@ group :development do
   # I18n.locale = "fr"
   # I18n::WordCount.word_count(".",1)
   # ==> words count longer or equal than 1 characters
+  gem 'i18n-tasks'
 end
 
 group :test do
   ##### TESTS #####
   gem "rspec-rails", ">= 3.4.0"
+  gem 'rspec-json_expectations'
   gem "guard-rspec", require: false
   gem "rb-inotify", :require => false
   gem "libnotify"
@@ -99,6 +107,7 @@ group :test do
   gem 'minitest-reporters'
   #gem 'mini_backtrace'
   gem 'guard-minitest'
+  gem 'test_after_commit'
 end
 
 #Authentification
@@ -107,23 +116,25 @@ gem 'devise-basecamper'
 gem 'devise_invitable'
 
 gem 'exception_notification', '2.6.1', :require => 'exception_notifier'
-gem "select2-rails"
+gem "select2-rails", '~> 3.5.9.3' #v4.0.2 uses a new way of initSelection (be careful)
 
 gem 'awesome_nested_set' #gestion des dossier par arbre
 
 gem 'turbolinks' #links_navigation_accelerator
 
-gem 'rails_config' #RailsConfig helps you easily manage environment specific Rails settings in an easy and usable manner
+gem 'config' #RailsConfig helps you easily manage environment specific Rails settings in an easy and usable manner
 
 gem 'carrierwave'
+gem 'carrierwave-bombshelter' #prevent unrecognized magic-bytes image specification, ie: ImageTragick
 gem 'mini_magick'
 gem 'dropzonejs-rails'
 gem 'jquery-fileupload-rails'
 
 gem 'linkedin'
 
-gem "pundit" #gestion des droits d'accès
+gem "pundit", '~> 0.3.0' #gestion des droits d'accès
 
+gem 'best_in_place', :path => './vendor/best_in_place'
 
 # Job scheduler
 gem 'sidekiq', ' ~> 2.17'
@@ -136,7 +147,7 @@ gem 'httparty', "0.11.0", :group => [:production, :development]
 
 # Inline CSS style in mails
 gem 'premailer-rails'
-gem 'nokogiri', '>= 1.6.8.rc' #Nokogiri is an HTML, XML, SAX, and Reader parser. Among Nokogiri's many features is the ability to search documents via XPath or CSS3 selectors.
+gem 'nokogiri' #Nokogiri is an HTML, XML, SAX, and Reader parser. Among Nokogiri's many features is the ability to search documents via XPath or CSS3 selectors.
 
 gem 'gon'
 
@@ -165,6 +176,7 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
 #Lada
+gem 'ladda-rails', :path => "./vendor/ladda-rails"
 
 gem 'zeroclipboard-rails'
 
@@ -176,20 +188,21 @@ gem 'whenever', require: false
 
 gem 'zippy'
 
-gem 'i18n-tasks'
 gem 'i18n-timezones'
 
 gem 'influxdb-rails'
 
 # froala text editor
-gem "wysiwyg-rails"
+gem "wysiwyg-rails", '~> 1.2.8'
 # back end markdown/html converter
 gem "redcarpet"
 gem "font-awesome-rails"
 
-gem "wicked_pdf"
+gem "wicked_pdf", "1.0.3"
 gem "combine_pdf"
 
 # ordered activerecord pourri
 gem "ordered-active-record"
 gem "backport_new_renderer"
+
+gem 'redis-session-store'
