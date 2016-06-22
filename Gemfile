@@ -18,7 +18,6 @@ gem 'will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem "spine-rails", :path => './vendor/spine-rails'
 gem "json2-rails"
 gem 'sass-rails', '~> 4.0.2'
 gem 'coffee-rails'
@@ -49,7 +48,6 @@ gem 'rack'
 gem 'json'
 gem 'coffee-script'
 gem 'sprockets', '~> 2.11.0'
-gem 'sprockets-commonjs', :path => './vendor/sprockets-commonjs'
 
 
 gem 'byebug', groups: [:development, :test]
@@ -70,7 +68,6 @@ group :development do
   # gem 'jasmine' #Jasmine is a Behavior Driven Development testing framework for JavaScript
 
   gem 'gemsurance' #Gemsurance is a tool for monitoring if any of your Ruby Gems are out-of-date or vulnerable. usage : $bundle exec gemsurance [options]
-  gem 'shut_up_assets', :path => './vendor/shut_up_assets'
   gem 'rails-erd'
 
   gem 'spring'
@@ -134,7 +131,6 @@ gem 'linkedin'
 
 gem "pundit", '~> 0.3.0' #gestion des droits d'accès
 
-gem 'best_in_place', :path => './vendor/best_in_place'
 
 # Job scheduler
 gem 'sidekiq', ' ~> 2.17'
@@ -176,7 +172,6 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
 #Lada
-gem 'ladda-rails', :path => "./vendor/ladda-rails"
 
 gem 'zeroclipboard-rails'
 
